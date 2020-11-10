@@ -8,7 +8,7 @@ import {
 
 const Player = () => {
   return (
-    <div className="Player">
+    <div className="player">
       <div className="time-control">
         <p>Start Time</p>
         <input type="range" />
@@ -17,7 +17,11 @@ const Player = () => {
       <div className="play-control">
         <FontAwesomeIcon className="skip-back" size="2x" icon={faAngleLeft} />
         <FontAwesomeIcon className="play" size="2x" icon={faPlay} />
-        <FontAwesomeIcon className="skip" size="2x" icon={faAngleRight} />
+        <FontAwesomeIcon
+          className="skip-forward"
+          size="2x"
+          icon={faAngleRight}
+        />
       </div>
     </div>
   );
