@@ -7,6 +7,9 @@
   width: 20rem;
   height: 100%;
   overflow: scroll;
+  transform: translateX(-100%);
+  transition: all 0.5s ease;
+  opacity: 0;
   background: white;
   h2 {
     padding: 2rem;
@@ -55,4 +58,8 @@
 }
 .selected {
   background: rgb(185, 185, 238);
+}
+.active-library {
+  transform: translateX(0%);
+  opacity: 1;
 }
