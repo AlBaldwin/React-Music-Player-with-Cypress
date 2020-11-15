@@ -1,6 +1,6 @@
 ## This project is still under development ##
 
-# Getting Started with Create React App
+# React music player app with Cypress
 
 I built this React music player app in a react Dev camp course I recently enrolled in. I have added a test framework using Cypress to experiment with the cypress react-selector library. 
 
