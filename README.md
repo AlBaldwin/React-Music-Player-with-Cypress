@@ -1,3 +1,5 @@
+## This project is still under development ##
+
 # Getting Started with Create React App
 
 This React player website was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) and built via a Dev camp course
