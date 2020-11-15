@@ -18,23 +18,17 @@ You will also see any lint errors in the console.
 
 Opens Cypress from the project
 
+### cypress react-selectors examples
+
 ```
-describe("Check default song props/state", () => {
+describe("Use the cypress react-selector library to validate components, props and state of the react music player", () => {
   describe("Hooks", () => {
     before(() => {
       cy.visit("/");
       cy.waitForReact(1000, "#root");
     });
 
-    it("Default song Beaver Creek is active", () => {
-      cy.react("Nav", { props: { libraryStatus: false } });
-      cy.getReact("Song", {
-        props: {
-          currentSong: {},
-        },
-      }).getProps("currentSong.active").should("eq", true);
-    });
-
+//Gets song name from the current song using the cypress react-selectors
     it("Default song name Beaver Creek is set", () => {
       cy.getReact("Song", {
         props: {
@@ -43,34 +37,14 @@ describe("Check default song props/state", () => {
       }).getProps("currentSong.name").should("eq", "Beaver Creek");
     });
 
-    it("Default artist Aso, Middle School, Aviino is set ", () => {
-      cy.getReact("Song", {
-        props: {
-          currentSong: {},
-        },
-      }).getProps("currentSong.artist").should(
-        "eq",
-        "Aso, Middle School, Aviino",
-      );
-    });
-
-    it("Audio link is set for Beaver Creek ", () => {
-      cy.getReact("Song", {
-        props: {
-          currentSong: {},
-        },
-      }).getProps("currentSong.audio").should(
-        "eq",
-        "https://mp3.chillhop.com/serve.php/?mp3=10075",
-      );
-    });
-
-    it("Player is not playing", () => {
+//validate the song is playing via the Player components isPlaying props
+    it("Press the play icon and the song plays", () => {
+      cy.get(".play").click();
       cy.getReact("Player", {
-        props: { isPlaying: false },
+        props: { isPlaying: true },
       })
         .getProps("isPlaying")
-        .should("eq", false);
+        .should("eq", true);
     });
   });
 });

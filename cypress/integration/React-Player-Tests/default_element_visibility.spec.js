@@ -1,4 +1,4 @@
-describe("Launch the Wave React Player website", () => {
+describe("Sidebar visibility", () => {
   describe("Hooks", () => {
     before(() => {
       cy.visit("/");

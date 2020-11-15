@@ -51,5 +51,14 @@ describe("Check default song props/state", () => {
         .getProps("isPlaying")
         .should("eq", false);
     });
+
+    it("Press play and the song plays", () => {
+      cy.get(".play").click();
+      cy.getReact("Player", {
+        props: { isPlaying: true },
+      })
+        .getProps("isPlaying")
+        .should("eq", true);
+    });
   });
 });
