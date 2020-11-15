@@ -1,23 +1,55 @@
-describe("Launch the Wave React Player website", () => {
-  it("Default song is set", () => {
-    cy.visit("http://localhost:3000/");
-    cy.waitForReact(1000, "#root");
-    cy.react("Nav", { props: { libraryStatus: false } });
-    cy.react(
-      "Song",
-      {
+describe("Check default song props/state", () => {
+  describe("Hooks", () => {
+    before(() => {
+      cy.visit("/");
+      cy.waitForReact(1000, "#root");
+    });
+
+    it("Default song Beaver Creek is active", () => {
+      cy.react("Nav", { props: { libraryStatus: false } });
+      cy.getReact("Song", {
         props: {
-          currentSong: {
-            artist: "Aso, Middle School, Aviino",
-            active: true,
-            audio: "https://mp3.chillhop.com/serve.php/?mp3=10075",
-            color: ["#205950", "#2ab3bf"],
-            name: "Beaver Creek",
-            cover:
-              "https://chillhop.com/wp-content/uploads/2020/09/0255e8b8c74c90d4a27c594b3452b2daafae608d-1024x1024.jpg",
-          },
+          currentSong: {},
         },
-      },
-    );
+      }).getProps("currentSong.active").should("eq", true);
+    });
+
+    it("Default song name Beaver Creek is set", () => {
+      cy.getReact("Song", {
+        props: {
+          currentSong: {},
+        },
+      }).getProps("currentSong.name").should("eq", "Beaver Creek");
+    });
+
+    it("Default artist Aso, Middle School, Aviino is set ", () => {
+      cy.getReact("Song", {
+        props: {
+          currentSong: {},
+        },
+      }).getProps("currentSong.artist").should(
+        "eq",
+        "Aso, Middle School, Aviino",
+      );
+    });
+
+    it("Audio link is set for Beaver Creek ", () => {
+      cy.getReact("Song", {
+        props: {
+          currentSong: {},
+        },
+      }).getProps("currentSong.audio").should(
+        "eq",
+        "https://mp3.chillhop.com/serve.php/?mp3=10075",
+      );
+    });
+
+    it("Player is not playing", () => {
+      cy.getReact("Player", {
+        props: { isPlaying: false },
+      })
+        .getProps("isPlaying")
+        .should("eq", false);
+    });
   });
 });
