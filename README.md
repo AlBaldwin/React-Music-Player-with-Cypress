@@ -2,7 +2,7 @@
 
 # Getting Started with Create React App
 
-This React player website was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) and built via a Dev camp course
+I built this React music player app in a react Dev camp course I recently enrolled in. I have added a test framework using Cypress to experiment with the cypress react-selector library. 
 
 ## Available Scripts
 
