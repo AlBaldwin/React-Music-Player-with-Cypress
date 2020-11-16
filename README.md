@@ -2,7 +2,8 @@
 
 # React Music Player App with Cypress Testing
 
-I built this React music player app in a react Dev camp course I recently enrolled in. I have added a test framework using Cypress to experiment with the cypress react-selector library. 
+This React music player app was built as a project in a React Dev camp course I recently enrolled in. 
+I have added a test framework using Cypress to experiment with so i can have a better understanding of reacts JSX, Components, props and state using the cypress react-selector library. 
 
 ## Available Scripts
 
