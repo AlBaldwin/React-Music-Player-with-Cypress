@@ -1,10 +1,10 @@
-describe("Sidebar visibility", () => {
-  describe("Hooks", () => {
-    before(() => {
-      cy.visit("/");
-      cy.waitForReact(1000, "#root");
-    });
+describe("Launch the music player app", () => {
+  before(() => {
+    cy.visit("/");
+    cy.waitForReact(1000, "#root");
+  });
 
+  describe("Check launch state", () => {
     it("Elements are loaded", () => {
       cy.contains("Waves").should("be.visible");
       cy.contains("Library").should("be.visible");
@@ -33,9 +33,18 @@ describe("Sidebar visibility", () => {
       cy.contains("Dancing Droplets").should("not.be.visible");
       cy.contains("Foggy Road").should("not.be.visible");
     });
+  });
 
-    it("User can expand the sidebar to view the available songs", () => {
+  describe("Expand the sidebar", () => {
+    it("Click the library button", () => {
       cy.get("button").click();
+    });
+
+    it("SideBar container is visible", () => {
+      cy.get(".library-songs").should("be.visible");
+    });
+
+    it("Songs are visible within the sidebar", () => {
       cy.wait(1000);
       cy.contains("Daylight").should("be.visible");
       cy.contains("Keep Going").should("be.visible");

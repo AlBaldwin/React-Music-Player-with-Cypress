@@ -1,10 +1,10 @@
-describe("Check default song props/state", () => {
-  describe("Hooks", () => {
-    before(() => {
-      cy.visit("/");
-      cy.waitForReact(1000, "#root");
-    });
+describe("Launch the music player app", () => {
+  before(() => {
+    cy.visit("/");
+    cy.waitForReact(1000, "#root");
+  });
 
+  describe("Check default song props/state", () => {
     it("Default song Beaver Creek is active", () => {
       cy.react("Nav", { props: { libraryStatus: false } });
       cy.getReact("Song", {
@@ -59,6 +59,15 @@ describe("Check default song props/state", () => {
       })
         .getProps("isPlaying")
         .should("eq", true);
+    });
+
+    it("Press pause and the song is paused", () => {
+      cy.get(".fa-pause").click();
+      cy.getReact("Player", {
+        props: { isPlaying: false },
+      })
+        .getProps("isPlaying")
+        .should("eq", false);
     });
   });
 });
