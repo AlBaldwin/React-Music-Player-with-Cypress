@@ -19,7 +19,7 @@ You will also see any lint errors in the console.
 
 ### `yarn run cypress open` - `npx cypress open`
 
-Opens Cypress from the proje
+Opens Cypress from the project
 
 ### cypress react-selectors examples
 
