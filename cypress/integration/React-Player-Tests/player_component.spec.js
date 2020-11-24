@@ -1,4 +1,4 @@
-describe("Launch the music player app", () => {
+describe("Launch the music player app to test the player component", () => {
   before(() => {
     cy.visit("/");
     cy.waitForReact(1000, "#root");
@@ -79,7 +79,7 @@ describe("Launch the music player app", () => {
     });
   });
 
-  describe("Next song when the previous song was paused", () => {
+  describe("Click next song when the current song was paused", () => {
     it("Press next song icon", () => {
       cy.get(".fa-angle-right").click();
     });
@@ -110,7 +110,7 @@ describe("Launch the music player app", () => {
     });
   });
 
-  describe("Next song when the previous song was playing", () => {
+  describe("Click next song when the current song was playing", () => {
     it("Press next song icon", () => {
       cy.get(".fa-angle-right").click();
     });
@@ -132,7 +132,7 @@ describe("Launch the music player app", () => {
     });
   });
 
-  describe("previous song when the current song was playing", () => {
+  describe("Click previous song when the current song was playing", () => {
     it("Press previous song icon", () => {
       cy.get(".fa-angle-left").click();
     });
@@ -151,6 +151,10 @@ describe("Launch the music player app", () => {
       })
         .getProps("isPlaying")
         .should("eq", true);
+    });
+
+    it("Pause the song", () => {
+      cy.get(".fa-pause").click();
     });
   });
 });

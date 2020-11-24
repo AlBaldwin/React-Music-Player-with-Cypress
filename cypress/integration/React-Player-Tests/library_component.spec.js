@@ -1,4 +1,4 @@
-describe("Launch the music player app", () => {
+describe("Launch the music player app to test the default state and library component", () => {
   before(() => {
     cy.visit("/");
     cy.waitForReact(1000, "#root");
@@ -75,6 +75,26 @@ describe("Launch the music player app", () => {
 
     it("The song Foggy Road is visible within the sidebar", () => {
       cy.contains("Foggy Road").should("be.visible");
+    });
+  });
+
+  describe("Select a song from the sidebar", () => {
+    it("Click Foggy Raod", () => {
+      cy.get(".library-songs > :nth-child(8)").click();
+    });
+
+    it("Foggy Road song is selected in the player", () => {
+      cy.getReact("Song", {
+        props: {
+          currentSong: {},
+        },
+      }).getProps("currentSong.name").should("eq", "Foggy Road");
+    });
+
+    it("Pause the song", () => {
+      cy.get(".fa-play").click();
+      cy.get(".fa-play").should("not.be.visible");
+      cy.get(".fa-pause").should("be.visible");
     });
   });
 });
