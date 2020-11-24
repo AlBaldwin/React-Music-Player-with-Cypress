@@ -1,9 +1,9 @@
-## This project is still under development ##
+## This project is still under development
 
 # React Music Player App with Cypress Testing
 
-This React music player app was built as a project in a React Dev camp course I recently enrolled in. 
-I have added a test framework using Cypress to experiment with so i can have a better understanding of reacts JSX, Components, props and state using the cypress react-selector library. 
+This React music player app was built as a project in a React Dev camp course I recently enrolled in.
+I have added a test framework using Cypress to experiment with so i can have a better understanding of reacts JSX, Components, props and state using the cypress react-selector library.
 
 ## Available Scripts
 
@@ -19,20 +19,28 @@ You will also see any lint errors in the console.
 
 ### `yarn run cypress open` - `npx cypress open`
 
-Opens Cypress from the project
+Opens Cypress from the proje
 
 ### cypress react-selectors examples
 
 ```
-describe("Use the cypress react-selector library to validate components, props and state of the react music player", () => {
-  describe("Hooks", () => {
-    before(() => {
-      cy.visit("/");
-      cy.waitForReact(1000, "#root");
+describe("Launch the music player app", () => {
+  before(() => {
+    cy.visit("/");
+    cy.waitForReact(1000, "#root");
+  });
+
+  describe("Check and play default song", () => {
+    it("Default song is active", () => {
+      cy.react("Nav", { props: { libraryStatus: false } });
+      cy.getReact("Song", {
+        props: {
+          currentSong: {},
+        },
+      }).getProps("currentSong.active").should("eq", true);
     });
 
-//Gets song name from the current song using the cypress react-selectors
-    it("Default song name Beaver Creek is set", () => {
+    it("Default song name is Beaver Creek", () => {
       cy.getReact("Song", {
         props: {
           currentSong: {},
@@ -40,8 +48,8 @@ describe("Use the cypress react-selector library to validate components, props a
       }).getProps("currentSong.name").should("eq", "Beaver Creek");
     });
 
-//validate the song is playing via the Player components isPlaying props
-    it("Press the play icon and the song plays", () => {
+
+    it("Press play and the song plays", () => {
       cy.get(".play").click();
       cy.getReact("Player", {
         props: { isPlaying: true },

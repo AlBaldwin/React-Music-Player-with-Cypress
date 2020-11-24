@@ -4,7 +4,7 @@ describe("Launch the music player app", () => {
     cy.waitForReact(1000, "#root");
   });
 
-  describe("Check launch state", () => {
+  describe("Check the music player launch state", () => {
     it("Elements are loaded", () => {
       cy.contains("Waves").should("be.visible");
       cy.contains("Library").should("be.visible");
@@ -13,18 +13,18 @@ describe("Launch the music player app", () => {
       cy.get(".player").should("be.visible");
     });
 
-    it("Song conatiner is loaded", () => {
+    it("The song conatiner is loaded", () => {
       cy.get(".song-container > h2").contains("Beaver Creek");
       cy.get(".song-container > h3").contains("Aso, Middle School, Aviino");
       cy.get(".time-control > :nth-child(1)").contains("0:00");
       cy.get(".time-control > :nth-child(3)").contains("2:17");
     });
 
-    it("SideBar container is not visible", () => {
+    it("The sideBar container is not visible", () => {
       cy.get(".library-songs").should("not.be.visible");
     });
 
-    it("SideBar songs are not visible on launch", () => {
+    it("The sideBar songs are not visible on launch", () => {
       cy.contains("Daylight").should("not.be.visible");
       cy.contains("Keep Going").should("not.be.visible");
       cy.contains("Nightfall").should("not.be.visible");
@@ -40,19 +40,40 @@ describe("Launch the music player app", () => {
       cy.get("button").click();
     });
 
-    it("SideBar container is visible", () => {
+    it("The sideBar container is visible", () => {
       cy.get(".library-songs").should("be.visible");
     });
 
-    it("Songs are visible within the sidebar", () => {
+    it("The songs Daylight is visible within the sidebar", () => {
       cy.wait(1000);
       cy.contains("Daylight").should("be.visible");
+    });
+
+    it("The song Keep Going is visible within the sidebar", () => {
       cy.contains("Keep Going").should("be.visible");
+    });
+
+    it("The song Nightfall is visible within the sidebar", () => {
       cy.contains("Nightfall").should("be.visible");
+    });
+
+    it("The song Reflection is visible within the sidebar", () => {
       cy.contains("Reflection").should("be.visible");
+    });
+
+    it("Scroll to the bottom of the sidebar", () => {
       cy.contains("Foggy Road").scrollIntoView();
+    });
+
+    it("The song Under the City Stars is visible within the sidebar", () => {
       cy.contains("Under the City Stars").should("be.visible");
+    });
+
+    it("The song Dancing Droplets is visible within the sidebar", () => {
       cy.contains("Dancing Droplets").should("be.visible");
+    });
+
+    it("The song Foggy Road is visible within the sidebar", () => {
       cy.contains("Foggy Road").should("be.visible");
     });
   });
