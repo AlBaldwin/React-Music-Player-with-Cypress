@@ -1,8 +1,6 @@
-## This project is still under development
-
 # React Music Player App with Cypress Testing
 
-This React music player app was built as a project in a React Dev camp course I recently enrolled in.
+This React music player app was built through a React Dev camp course I recently enrolled in.
 I have added a test framework using Cypress to experiment with so i can have a better understanding of reacts JSX, Components, props and state using the cypress react-selector library.
 
 ## Available Scripts
@@ -17,7 +15,7 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
 
-### `yarn run cypress open` - `npx cypress open`
+### `yarn run cypress open` or `npx cypress open`
 
 Opens Cypress from the project
 
@@ -49,7 +47,7 @@ describe("Launch the music player app", () => {
     });
 
 
-    it("Press play and the song plays", () => {
+    it("Use the play button to play the song", () => {
       cy.get(".play").click();
       cy.getReact("Player", {
         props: { isPlaying: true },
